@@ -2,9 +2,16 @@
 
 Here, I want to present basic TransferMarkt data.
 
+This will be done using three main views:
+
+players
+teams
+leagues
+
 ## Description
 
-Data is taken from Kaggle.
+Data was downloaded from from Kaggle, 20250401.
+
 
 ## Getting Started
 
