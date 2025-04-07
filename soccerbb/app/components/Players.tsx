@@ -7,7 +7,10 @@ interface ProlificGoalScorer {
     goalcount: number;
 }
 
+import myData from './data.json';
+
 const Players: React.FC = () => {
+
     const [players, setPlayers] = useState<ProlificGoalScorer[]>([]);
     const [error, setError] = useState<string | null>(null);
 
