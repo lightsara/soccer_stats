@@ -30,5 +30,6 @@ const Players: React.FC = () => {
         return <div className="text-red-400">{error}</div>;
     }
 
+}
 
-export default Players;
+export default Players
