@@ -18,7 +18,7 @@ const Players: React.FC = () => {
         const fetchPlayers = async () => {
             try {
                 const data = await getProlificGoalScorer();
-                setPlayers(data.filter((player): player is ProlificGoalScorerer => 
+                setPlayers(data.filter((player): player is ProlificGoalScorer => 
                     typeof player.playername === 'number'));
             } catch {
                 setError("Failed to fetch prolific goal scorers.");

@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "I wish they all could be Brazilian",
-  description: "A tiny soccer stats app generated with React and Next.js"
+  description: "A tiny soccer stats app generated with React and Next.js using generously provided by David Cariboo (Kaggle)."
 };
 
 export default function RootLayout({
