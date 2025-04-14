@@ -1,0 +1,103 @@
+#!/usr/bin/env python3
+
+
+##Modifying script to have the name as key rather than ID.
+##Abandoning that approach. Taking the last defined with the same name.
+##prepare data 
+import json, copy
+
+
+##Prepare player data.
+
+##dirprep
+
+player_file = open('/home/sara/main/FrontEnd_2025/Misc/alldata/json_files/players_namekey.json', 'r')
+player_dict = json.load(player_file)
+del(player_dict["player_id"])
+player_file.close()
+
+print(player_dict["286772"])
+print(player_dict["371998"])
+
+appearance_file = open('/home/sara/main/FrontEnd_2025/Misc/alldata/json_files/appearances_mod.json', 'r')
+appearance_dict = json.load(appearance_file)
+del(appearance_dict["appearance_id"])
+appearance_file.close()
+
+
+
+#for appear in appearance_dict:
+#    print(appear)
+#    if not "player_id" in appearance_dict[appear]:
+#        print(appear)
+
+
+##Go through appearance_dict, associate_with player, add to player_dict
+for appear in appearance_dict:
+    #print(appear)
+    player_id = appearance_dict[appear]["player_id"]
+    if player_id not in player_dict:
+        print('not in player_dict', player_id)
+
+    elif "appearances" not in player_dict[player_id]:
+        player_dict[player_id]["appearances"] = 0
+    else:
+        player_dict[player_id]["appearances"] += 1
+
+
+##print(len(player_dict))
+##print(len(appearance_dict))
+
+
+##Noting the following:
+##These are in appearances but not in players
+##They occur twice. Ignore.
+##not in player_dict 255495
+##not in player_dict 411294
+##not in player_dict 380365
+##not in player_dict 380365
+##not in player_dict 255495
+##not in player_dict 411294
+
+##Next step - remove the player ids with the same name with the lowest #appear
+non_unique_player_name = {}
+coll_player_name_dict = {}
+coll_player = {}
+for player_id in player_dict:
+    player_name = player_dict[player_id]["name"]
+    last_season = player_dict[player_id]["last_season"]
+    if "appearances" in player_dict[player_id]:
+        appearances = player_dict[player_id]["appearances"]
+    else:
+        appearances = 0
+    if player_name in coll_player_name_dict:
+        coll_player_name_dict[player_name] += 1
+        if not player_name in non_unique_player_name:
+            non_unique_player_name[player_name] = []
+            non_unique_player_name[player_name].append(coll_player[player_name][0])
+        non_unique_player_name[player_name].append((int(last_season), int(appearances), player_id))
+    else:
+        coll_player_name_dict[player_name] = 1
+        coll_player[player_name] = []
+        coll_player[player_name].append((int(last_season), int(appearances), player_id))
+        
+print(len(non_unique_player_name))        
+        
+for player_name in non_unique_player_name:
+    print(player_name, sorted(non_unique_player_name[player_name], reverse=True))
+
+
+
+##Continue here - adding the clause that the last season counts the most
+
+    
+
+    ##Vinicius issue
+    ##258374 vinicius, Araujo 
+    ##688881 vinicius lopes, brazil, attack right
+    ##743587 tobias shakhtar donetsk
+
+    ##The real Vinicius
+    ##Vinícius José Paixão de Oliveira Júnior
+
+    
