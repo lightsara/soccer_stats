@@ -1,0 +1,64 @@
+#!/usr/bin/env python3
+
+##prepare data 
+import json
+
+##Prepare team/club data.
+
+##dirprep
+outdir = '/home/sara/main/FrontEnd_2025/Projects/soccer_stats/data/'
+rawdata = '/home/sara/main/FrontEnd_2025/Projects/soccer_stats/data/appearances.csv'
+output = '/home/sara/main/FrontEnd_2025/Projects/soccer_stats/data/appearances.json'
+
+##fileprep
+outfile = open(output, 'w')
+infile = open(rawdata, 'r')
+
+adict = {}
+for aline in infile:
+    ##strip the line
+    aline = aline.strip()
+    ##split the line  
+    aline = aline.split(',')
+    ##get the data
+    appearance_id = aline[0]
+    game_id = aline[1]
+    player_id = aline[2]
+    player_club_id = aline[3]
+    player_current_club_id = aline[4]
+    date = aline[5]
+    player_name = aline[6]
+    competition_id = aline[7]
+    yellow_cards = aline[8]
+    red_cards = aline[9]
+    goals = aline[10]
+    assists = aline[11]
+    minutes_played = aline[12]
+    ##create a dictionary for the data
+    adict[appearance_id] = {
+        'game_id': game_id,
+        'player_id': player_id,
+        'player_club_id': player_club_id,
+        'player_current_club_id': player_current_club_id,
+        'date': date,
+        'player_name': player_name,
+        'competition_id': competition_id,
+        'yellow_cards': yellow_cards,
+        'red_cards': red_cards,
+        'goals': goals,
+        'assists': assists,
+        'minutes_played': minutes_played
+    }
+
+
+##dump the dictionary to a json file        
+json.dump(adict, outfile, indent=4, sort_keys=True) 
+##close the files
+outfile.close() 
+infile.close()
+
+
+##data looks like this
+##appearance_id,game_id,player_id,player_club_id,player_current_club_id,date,player_name,competition_id,yellow_cards,red_cards,goals,assists,minutes_played
+
+
