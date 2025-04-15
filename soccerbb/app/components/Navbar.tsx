@@ -11,15 +11,15 @@ const Navbar: React.FC = () => {
         </li>
         <Separator orientation="vertical" />
         <li>
-          <Link href="/teams" className="hover:underline">Teams</Link>
+          <Link href="/teams" className="hover:underline">Clubs</Link>
         </li>
         <Separator orientation="vertical" />
         <li>
-          <Link href="/leagues" className="hover:underline">Leagues</Link>
+          <Link href="/leagues" className="hover:underline">Competitions</Link>
         </li>
         <Separator orientation="vertical" />
         <li>
-          <Link href="/extras" className="hover:underline">Extra special features</Link>
+          <Link href="/extras" className="hover:underline"> Player by Country </Link>
         </li>
       </ul>
       </nav>
