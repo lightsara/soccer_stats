@@ -100,5 +100,5 @@ differ = before-after
 if differ == d:
     print(d)
     jsonfile = open('/home/sara/main/FrontEnd_2025/soccer_stats_python/output/' + 'reducing_same_names.json', 'w')
-    json.dump(player_dict, jsonfile)
+    json.dumps(player_dict, jsonfile)
     jsonfile.close()
