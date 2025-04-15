@@ -40,7 +40,7 @@ export default function Home() {
             <div key={index} className="border rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
               <h2 className="text-lg font-semibold">{typeof info === 'object' && 'name' in info ? info.name : 'N/A'}</h2>
               <p>Club: {typeof info === 'object' && 'current_club_name' in info ? info.current_club_name : 'N/A'} | #Games: {typeof info === 'object' && 'appearances' in info ? info.appearances : 'N/A'}</p>
-             <img src={typeof info === 'object' && 'image_url' in info ? info.image_url : ''} alt={typeof info === 'object' && 'name' in info ? info.name : ''} className="w-full h-auto mt-2 rounded-lg" />
+             <img src={typeof info === 'object' && 'image_url' in info ? info.image_url : ''} alt={typeof info === 'object' && 'name' in info ? info.name : ''} className="w-auto h-auto mt-2 rounded-lg" />
             </div>))}
           </div>
       </div>
