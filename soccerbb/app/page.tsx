@@ -34,11 +34,10 @@ export default function Home() {
   return (
         <div className="container mx-auto p-4">
           <h1 className="text-2xl font-bold mb-6">Soccer Players</h1>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-               {/* Map over player data properly */}
-          {Object.entries(playerData).map(([name, info], index) => (
-      
+
+            {Object.entries(playerData).slice(0, 10).map(([name, info], index) => (
+
             <div key={index} className="border rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
               console.log(index)
               <h2 className="text-lg font-semibold">{name}</h2>
