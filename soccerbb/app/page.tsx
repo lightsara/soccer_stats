@@ -1,5 +1,4 @@
-import * as playerData from '../data/players_cleaned_0414.json';
-import Image from 'next/image';
+import * as playerData from '../data/players_appearance_20250415.json';
 
 interface Player {
   player_id: number;
@@ -39,8 +38,19 @@ export default function Home() {
 
             <div key={index} className="border rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
               <h2 className="text-lg font-semibold">{typeof info === 'object' && 'name' in info ? info.name : 'N/A'}</h2>
-              <p>Club: {typeof info === 'object' && 'current_club_name' in info ? info.current_club_name : 'N/A'} | #Games: {typeof info === 'object' && 'appearances' in info ? info.appearances : 'N/A'}</p>
-             <img src={typeof info === 'object' && 'image_url' in info ? info.image_url : ''} alt={typeof info === 'object' && 'name' in info ? info.name : ''} className="w-full h-auto mt-2 rounded-lg" />
+              <p>Club: {typeof info === 'object' && 'current_club_name' in info ? info.current_club_name : 'N/A'}</p>
+              <p>  #Games: {typeof info === 'object' && 'appearances' in info ? info.appearances : 'N/A'}</p>
+              <p>  #Goals: {typeof info === 'object' && 'goals' in info ? info.goals : 'N/A'}</p>
+              <p>  #Assists: {typeof info === 'object' && 'assists' in info ? info.assists : 'N/A'}</p>
+              <p> Goal contributions: {
+                (info.assists + info.goals)
+                } </p>
+              <p> G+A per game: {
+                ((info.assists + info.goals)/info.appearances).toFixed(2)
+                } </p>
+
+
+             <img src={typeof info === 'object' && 'image_url' in info ? info.image_url : ''} alt={typeof info === 'object' && 'name' in info ? info.name : ''} className="w-auto h-auto mt-2 rounded-lg" />
             </div>))}
           </div>
       </div>
