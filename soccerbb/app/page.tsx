@@ -1,4 +1,4 @@
-import * as playerData from '../data/players_cleaned_0414.json';
+import * as playerData from '../data/players_appearance_20250415.json';
 import Image from 'next/image';
 
 interface Player {
